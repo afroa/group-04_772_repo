@@ -237,14 +237,21 @@ pre code {
 <ul>
 <li><p>Load the data</p></li>
 <li><p>Create a dataframe to deal only with the 2017 payouts</p></li>
-<li><p>Find the number of payouts from each year</p></li>
+<li><p>Create a dataframe to deal only with the 2007-2017 payouts</p></li>
+<li><p>Find the number of payouts from each year</p>
+<ul>
+<li>Sum the number (NOT THE TOTAL, ANDRES) of payouts per year</li>
+<li>Find the percent change from 2007 to 2017</li>
+</ul></li>
 <li><p>Find average amount</p>
 <ul>
 <li>Use the <mean> function to find that the average has increased</li>
 </ul></li>
-<li><p>Filter the 2017 payouts for settlements over $1 million</p></li>
-<li><p>Make a separate dataframe for the decade before (2007-2017)</p></li>
-<li><p>Filter the payouts for settlements over $1 million</p></li>
+<li><p>Find the &gt;= $1 million settlements</p>
+<ul>
+<li>Filter the 2017 payouts for settlements over $1 million, see how many there are</li>
+<li>Filter the 2007 payouts for settlements over $1 million, see how many there are</li>
+</ul></li>
 </ul>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
@@ -255,7 +262,7 @@ pre code {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiR3JvdXAgMDQgTm90ZWJvb2siCm91dHB1dDogaHRtbF9ub3RlYm9vawphdXRob3JzOiBIYW5uYWggWmllZ2xlciwgVGluYXNoZSBDaGluZ2FyYW5kZSwgQW5kcsOpcyBSb2EKLS0tCgotLS0KIyMjTUlMRVNUT05FIDAyIyMjCgpDaG9zZW4gcGFyYWdyYXBoOgoK4oCcQmV5b25kIHRoZSBtYW1tb3RoIGNhc2VzLCAjI2EgcGlsZXVwIG9mIG90aGVyIGxhcmdlIHBheW91dHMgaGFzIHBhZGRlZCB0aGUgdGFiIyMsIGEgVGltZXMgYW5hbHlzaXMgb2YgY2l0eSBwYXlvdXRzIGZvdW5kLiAKCldoaWxlIHRoZSAjI3RvdGFsIG51bWJlciBvZiBwYXlvdXRzIGhhcyBkaXBwZWQgb3ZlciB0aW1lIyMsIAoKdGhlICMjYXZlcmFnZSBhbW91bnQgaGFzIGluY3JlYXNlZC4jIwoKTGFzdCBidWRnZXQgeWVhciwgdGhlIGNpdHkgcGFpZCBvdXQgMzAgc2V0dGxlbWVudHMgb2YgJDEgbWlsbGlvbiBvciBtb3JlIOKAlCBmaXZlIHRpbWVzIGFzIG1hbnkgYXMgYSBkZWNhZGUgYmVmb3JlLuKAnQoKLS0KSW5kaXZpZHVhbCBEYXRhIFBvaW50cyB0byBJRDoKCi0gUGF5b3V0cyBkYXRhCi0tClRoZSBTdGVwczoKCi0gTG9hZCB0aGUgZGF0YQotIENyZWF0ZSBhIGRhdGFmcmFtZSB0byBkZWFsIG9ubHkgd2l0aCB0aGUgMjAxNyBwYXlvdXRzCi0gRmluZCB0aGUgbnVtYmVyIG9mIHBheW91dHMgZnJvbSBlYWNoIHllYXIKLSBGaW5kIGF2ZXJhZ2UgYW1vdW50CiAgLSBVc2UgdGhlIDxtZWFuPiBmdW5jdGlvbiB0byBmaW5kIHRoYXQgdGhlIGF2ZXJhZ2UgaGFzIGluY3JlYXNlZAotIEZpbHRlciB0aGUgMjAxNyBwYXlvdXRzIGZvciBzZXR0bGVtZW50cyBvdmVyICQxIG1pbGxpb24KIAoKLSBNYWtlIGEgc2VwYXJhdGUgZGF0YWZyYW1lIGZvciB0aGUgZGVjYWRlIGJlZm9yZSAoMjAwNy0yMDE3KQotIEZpbHRlciB0aGUgcGF5b3V0cyBmb3Igc2V0dGxlbWVudHMgb3ZlciAkMSBtaWxsaW9uCgoKYGBge3J9CiNXcml0ZSB0aGUgYWN0dWFsIGNvZGUgaGVyZQpgYGAKCgoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiR3JvdXAgMDQgTm90ZWJvb2siCm91dHB1dDogaHRtbF9ub3RlYm9vawphdXRob3JzOiBIYW5uYWggWmllZ2xlciwgVGluYXNoZSBDaGluZ2FyYW5kZSwgQW5kcsOpcyBSb2EKLS0tCgotLS0KIyMjTUlMRVNUT05FIDAyIyMjCgpDaG9zZW4gcGFyYWdyYXBoOgoK4oCcQmV5b25kIHRoZSBtYW1tb3RoIGNhc2VzLCBhIHBpbGV1cCBvZiBvdGhlciBsYXJnZSBwYXlvdXRzIGhhcyBwYWRkZWQgdGhlIHRhYiwgYSBUaW1lcyBhbmFseXNpcyBvZiBjaXR5IHBheW91dHMgZm91bmQuIAoKV2hpbGUgdGhlICMjdG90YWwgbnVtYmVyIG9mIHBheW91dHMgaGFzIGRpcHBlZCBvdmVyIHRpbWUjIywgCgp0aGUgIyNhdmVyYWdlIGFtb3VudCBoYXMgaW5jcmVhc2VkLiMjCgpMYXN0IGJ1ZGdldCB5ZWFyLCB0aGUgY2l0eSBwYWlkIG91dCAzMCBzZXR0bGVtZW50cyBvZiAkMSBtaWxsaW9uIG9yIG1vcmUg4oCUIGZpdmUgdGltZXMgYXMgbWFueSBhcyBhIGRlY2FkZSBiZWZvcmUu4oCdCgotLQpJbmRpdmlkdWFsIERhdGEgUG9pbnRzIHRvIElEOgoKLSBQYXlvdXRzIGRhdGEKLS0KVGhlIFN0ZXBzOgoKLSBMb2FkIHRoZSBkYXRhCgotIENyZWF0ZSBhIGRhdGFmcmFtZSB0byBkZWFsIG9ubHkgd2l0aCB0aGUgMjAxNyBwYXlvdXRzCi0gQ3JlYXRlIGEgZGF0YWZyYW1lIHRvIGRlYWwgb25seSB3aXRoIHRoZSAyMDA3LTIwMTcgcGF5b3V0cwotIEZpbmQgdGhlIG51bWJlciBvZiBwYXlvdXRzIGZyb20gZWFjaCB5ZWFyCiAgLSBTdW0gdGhlIG51bWJlciAoTk9UIFRIRSBUT1RBTCwgQU5EUkVTKSBvZiBwYXlvdXRzIHBlciB5ZWFyCiAgLSBGaW5kIHRoZSBwZXJjZW50IGNoYW5nZSBmcm9tIDIwMDcgdG8gMjAxNwogIAotIEZpbmQgYXZlcmFnZSBhbW91bnQKICAtIFVzZSB0aGUgPG1lYW4+IGZ1bmN0aW9uIHRvIGZpbmQgdGhhdCB0aGUgYXZlcmFnZSBoYXMgaW5jcmVhc2VkCiAgCi0gRmluZCB0aGUgPj0gJDEgbWlsbGlvbiBzZXR0bGVtZW50cyAgIAogIC0gRmlsdGVyIHRoZSAyMDE3IHBheW91dHMgZm9yIHNldHRsZW1lbnRzIG92ZXIgJDEgbWlsbGlvbiwgc2VlIGhvdyBtYW55IHRoZXJlIGFyZQogIC0gRmlsdGVyIHRoZSAyMDA3IHBheW91dHMgZm9yIHNldHRsZW1lbnRzIG92ZXIgJDEgbWlsbGlvbiwgc2VlIGhvdyBtYW55IHRoZXJlIGFyZQogCgoKCmBgYHtyfQojV3JpdGUgdGhlIGFjdHVhbCBjb2RlIGhlcmUKYGBgCgoKCg==</div>
 
 
 
