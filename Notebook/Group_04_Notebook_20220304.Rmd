@@ -9,7 +9,13 @@ authors: Hannah Ziegler, Tinashe Chingarande, Andrés Roa
 
 Chosen paragraph:
 
-“Beyond the mammoth cases, a pileup of other large payouts has padded the tab, a Times analysis of city payouts found. While the total number of payouts has dipped over time, the average amount has increased. Last budget year, the city paid out 30 settlements of $1 million or more — five times as many as a decade before.”
+“Beyond the mammoth cases, ##a pileup of other large payouts has padded the tab##, a Times analysis of city payouts found. 
+
+While the ##total number of payouts has dipped over time##, 
+
+the ##average amount has increased.##
+
+Last budget year, the city paid out 30 settlements of $1 million or more — five times as many as a decade before.”
 
 --
 Individual Data Points to ID:
@@ -18,7 +24,16 @@ Individual Data Points to ID:
 --
 The Steps:
 
+- Load the data
 - Create a dataframe to deal only with the 2018 payouts
+- Find the number of payouts from each year
+- Find average amount
+  - Use the <mean> function to find that the average has increased
+- Filter the 2018 payouts for settlements over $1 million
+ 
+
+- Make a separate dataframe for the decade before (2008-2018)
+- Filter the payouts for settlements over $1 million
 
 
 ```{r}
