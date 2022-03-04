@@ -11,6 +11,15 @@ Chosen paragraph:
 
 “Beyond the mammoth cases, a pileup of other large payouts has padded the tab, a Times analysis of city payouts found. While the total number of payouts has dipped over time, the average amount has increased. Last budget year, the city paid out 30 settlements of $1 million or more — five times as many as a decade before.”
 
+--
+Individual Data Points to ID:
+
+- Payouts data
+--
+The Steps:
+
+- Create a dataframe to deal only with the 2018 payouts
+
 
 ```{r}
 #Write the actual code here
