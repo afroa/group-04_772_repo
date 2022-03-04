@@ -49,9 +49,9 @@ The Steps:
  
 
 
-
+#Read in the data for 2006-2017 & read in the data for 2006-2017 TOTALS`
 ```{r}
-#Read in the data for 2006-2017 & read in the data for 2006-2017 TOTALS
+`2006-2017`<- read_csv("Data/payouts/FY06-FY18_PAYOUTS.csv")
 
 ```
 
