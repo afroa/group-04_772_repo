@@ -4,6 +4,14 @@ output: html_notebook
 authors: Hannah Ziegler, Tinashe Chingarande, Andrés Roa
 ---
 
+R Studio Engine Room
+```{r}
+# Turn off scientific notation
+options(scipen=999)
+
+# Load the tidyverse.
+library(tidyverse)
+```
 ---
 ###MILESTONE 02###
 
@@ -43,7 +51,8 @@ The Steps:
 
 
 ```{r}
-#Write the actual code here
+#Read in the data for 2006-2017 & read in the data for 2006-2017 TOTALS
+
 ```
 
 
