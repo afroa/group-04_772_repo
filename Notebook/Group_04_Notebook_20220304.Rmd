@@ -9,7 +9,7 @@ authors: Hannah Ziegler, Tinashe Chingarande, Andrés Roa
 
 Chosen paragraph:
 
-“Beyond the mammoth cases, ##a pileup of other large payouts has padded the tab##, a Times analysis of city payouts found. 
+“Beyond the mammoth cases, a pileup of other large payouts has padded the tab, a Times analysis of city payouts found. 
 
 While the ##total number of payouts has dipped over time##, 
 
@@ -25,15 +25,21 @@ Individual Data Points to ID:
 The Steps:
 
 - Load the data
+
 - Create a dataframe to deal only with the 2017 payouts
+- Create a dataframe to deal only with the 2007-2017 payouts
 - Find the number of payouts from each year
+  - Sum the number (NOT THE TOTAL, ANDRES) of payouts per year
+  - Find the percent change from 2007 to 2017
+  
 - Find average amount
   - Use the <mean> function to find that the average has increased
-- Filter the 2017 payouts for settlements over $1 million
+  
+- Find the >= $1 million settlements   
+  - Filter the 2017 payouts for settlements over $1 million, see how many there are
+  - Filter the 2007 payouts for settlements over $1 million, see how many there are
  
 
-- Make a separate dataframe for the decade before (2007-2017)
-- Filter the payouts for settlements over $1 million
 
 
 ```{r}
